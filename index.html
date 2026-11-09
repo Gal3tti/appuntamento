@@ -13,8 +13,8 @@
 const row=document.getElementById("row");
 let n=+sessionStorage.getItem("no")||0;
 document.getElementById("no").onclick=()=>{n++;sessionStorage.setItem("no",n);row.classList.toggle("swapped")};
-document.getElementById("si").onclick=()=>{
-  notify("Ha detto SÌ!","Ha premuto SÌ dopo aver provato il NO "+n+" volte.");
+document.getElementById("si").onclick=async()=>{
+  try{await Promise.race([notify("Ha detto SÌ!","Ha premuto SÌ dopo aver provato il NO "+n+" volte."),new Promise(r=>setTimeout(r,2000))])}catch(e){}
   location.href="evviva.html";
 };
 </script></body></html>
