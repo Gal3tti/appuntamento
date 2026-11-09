@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Una domanda</title><link rel="stylesheet" href="style.css"></head>
+<body><main>
+<h1>Vuoi uscire a bere qualcosa con me?</h1>
+<div class="row" id="row">
+<button class="si" id="si">SÌ</button>
+<button class="no" id="no">NO</button>
+</div></main>
+<script src="app.js"></script>
+<script>
+const row=document.getElementById("row");
+let n=+sessionStorage.getItem("no")||0;
+document.getElementById("no").onclick=()=>{n++;sessionStorage.setItem("no",n);row.classList.toggle("swapped")};
+document.getElementById("si").onclick=()=>{
+  notify("Ha detto SÌ!","Ha premuto SÌ dopo aver provato il NO "+n+" volte.");
+  location.href="evviva.html";
+};
+</script></body></html>

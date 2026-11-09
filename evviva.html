@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Evviva!</title><link rel="stylesheet" href="style.css"></head>
+<body><main>
+<h1>EVVIVA!</h1>
+<form id="f">
+<label for="d">Che giorno ti va bene?</label>
+<input type="date" id="d" required>
+<div><button class="send" type="submit">INVIA</button></div>
+<p class="msg" id="msg" role="status"></p>
+</form></main>
+<script src="app.js"></script>
+<script>
+const d=document.getElementById("d"),msg=document.getElementById("msg");
+d.min=new Date().toISOString().slice(0,10);
+document.getElementById("f").onsubmit=async e=>{
+  e.preventDefault();
+  const giorno=new Date(d.value).toLocaleDateString("it-IT",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
+  try{
+    const ok=await notify("Giorno scelto: "+giorno,"Ha scelto il giorno: "+giorno);
+    msg.textContent=ok?"Inviato! A presto.":"Non è partito, riprova.";
+    if(ok)e.target.querySelector(".send").disabled=true;
+  }catch{msg.textContent="Non è partito, riprova."}
+};
+</script></body></html>
