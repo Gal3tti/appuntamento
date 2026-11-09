@@ -6,5 +6,7 @@ async function notify(subject, message) {
     headers: { "Content-Type": "application/json", Accept: "application/json" },
     body: JSON.stringify({ access_key: ACCESS_KEY, subject, from_name: "appuntamento.gal3tti.net", message })
   });
-  return r.ok;
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok || !j.success) throw new Error(j.message || "errore " + r.status);
+  return true;
 }
