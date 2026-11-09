@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Serata già scelta</title><link rel="stylesheet" href="style.css"></head>
+<body><main>
+<h1>Serata già scelta!</h1>
+<p>Mi dispiace, non si cambia più.</p>
+<p id="g"></p>
+</main>
+<script>
+try{const s=localStorage.getItem("scelta");if(s)document.getElementById("g").textContent="Ci vediamo "+s+".";}catch(e){}
+</script></body></html>

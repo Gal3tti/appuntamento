@@ -12,6 +12,7 @@
 </form></main>
 <script src="app.js"></script>
 <script>
+try{if(localStorage.getItem("scelta"))location.replace("chiuso.html")}catch(e){}
 const d=document.getElementById("d"),msg=document.getElementById("msg");
 d.min=new Date().toISOString().slice(0,10);
 document.getElementById("f").onsubmit=async e=>{
@@ -20,7 +21,7 @@ document.getElementById("f").onsubmit=async e=>{
   try{
     const ok=await notify("Giorno scelto: "+giorno,"Ha scelto il giorno: "+giorno);
     msg.textContent=ok?"Inviato! A presto.":"Non è partito, riprova.";
-    if(ok)e.target.querySelector(".send").disabled=true;
+    if(ok){e.target.querySelector(".send").disabled=true;try{localStorage.setItem("scelta",giorno)}catch(x){}}
   }catch(err){msg.textContent="Non è partito: "+err.message}
 };
 </script></body></html>

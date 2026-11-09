@@ -10,6 +10,7 @@
 </div></main>
 <script src="app.js"></script>
 <script>
+try{if(localStorage.getItem("scelta"))location.replace("chiuso.html")}catch(e){}
 const row=document.getElementById("row");
 let n=+sessionStorage.getItem("no")||0;
 document.getElementById("no").onclick=()=>{n++;sessionStorage.setItem("no",n);row.classList.toggle("swapped")};
