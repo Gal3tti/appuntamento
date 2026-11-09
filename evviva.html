@@ -21,6 +21,6 @@ document.getElementById("f").onsubmit=async e=>{
     const ok=await notify("Giorno scelto: "+giorno,"Ha scelto il giorno: "+giorno);
     msg.textContent=ok?"Inviato! A presto.":"Non è partito, riprova.";
     if(ok)e.target.querySelector(".send").disabled=true;
-  }catch{msg.textContent="Non è partito, riprova."}
+  }catch(err){msg.textContent="Non è partito: "+err.message}
 };
 </script></body></html>
